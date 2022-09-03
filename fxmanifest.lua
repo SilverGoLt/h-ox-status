@@ -20,7 +20,3 @@ client_scripts {
     'client/class/status.lua',
     'client/*.lua',
 }
-
-dependencies {
-    'sc-utils'
-}
