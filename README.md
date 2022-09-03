@@ -13,6 +13,12 @@ LUA
 [oxmysql](https://github.com/overextended/oxmysql)
 
 
+### SQL
+```sql
+ALTER TABLE characters
+ADD COLUMN status LONGTEXT DEFAULT NULL;
+```
+
 ## Authors
 - [@Haroki](https://github.com/SilverGoLt)
 
