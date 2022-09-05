@@ -64,7 +64,7 @@ function Status.new (name, amount)
         amount = amount
     }
 
-    print('[DEBUG] Creating '..name)
+    if Config.Debug then print('[DEBUG] Creating '..name) end
 
     i += 1
 
