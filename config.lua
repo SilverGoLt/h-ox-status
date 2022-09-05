@@ -1,5 +1,6 @@
-Config = {}
-
-Config.StatusMax      = 1000000
-Config.TickTime       = 1000
-Config.UpdateInterval = 30000
+Config = {
+    Debug = true,
+    StatusMax = 1000000,
+    TickTime = 1000,
+    UpdateInterval = 30000
+}

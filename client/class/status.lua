@@ -58,13 +58,13 @@ local i = 1
 ---@param name string Status name
 ---@param amount number Status amount
 ---@return number
-function Status.new (name, amount)
+function Status.new(name, amount)
     local self = {
         name = name,
         amount = amount
     }
 
-    print('[DEBUG] Creating '..name)
+    if Config.Debug then print('[DEBUG] Creating '..name) end
 
     i += 1
 

@@ -33,14 +33,14 @@ function CStatus:addStatus (status, amount)
         self.status[status] = self.status[status] + amount
         return true
     else
-        print('[ERROR] Status not found: '..status.. 'for player: '..self.source)
+        print('[ERROR] Status not found: '..status.. ' for player: '..self.source)
         return false
     end
 end
 
 ---Saves the Players statuses to the database
 ---@return boolean
-function CStatus:saveStatuses ()
+function CStatus:saveStatuses()
     local result = MySQL.update.await('UPDATE characters SET status = ? WHERE charid = ?', {
         json.encode(self.status),
         self.charid
@@ -75,8 +75,7 @@ function pStatus.new (source, status, charid)
         charid = charid or nil,
     }
 
-    print('[DEBUG] Setting status to: '..json.encode(self.status, {indent = true}))
-
+    if Config.Debug then print('[DEBUG] Setting status to: '..json.encode(self.status, {indent = true})) end
     i += 1
 
     setmetatable(self, CStatus)
