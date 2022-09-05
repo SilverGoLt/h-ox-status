@@ -11,7 +11,7 @@ RegisterNetEvent('ox:selectCharacter', function(data)
         character
     })
 
-    if not result.status then
+    if not result or not result.status then
         pStatus.new(_source, nil, character)
         -- Since we are creating the new status let's save it to the database
         local obj = pStatus(_source)
