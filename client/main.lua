@@ -1,6 +1,6 @@
-
 -- Register all the statuses on character load
 local playerLoaded = false
+
 RegisterNetEvent('ox:playerLoaded', function()
     playerLoaded = true
     lib.callback('status:getStatuses', false, function(data)

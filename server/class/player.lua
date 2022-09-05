@@ -33,7 +33,7 @@ function CStatus:addStatus (status, amount)
         self.status[status] = self.status[status] + amount
         return true
     else
-        print('[ERROR] Status not found: '..status.. 'for player: '..self.source)
+        print('[ERROR] Status not found: '..status.. ' for player: '..self.source)
         return false
     end
 end
