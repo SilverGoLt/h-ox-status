@@ -1,23 +1,13 @@
-RegisterNetEvent('ox:selectCharacter', function(data)
-    local _source = source
-
-    local Player = Ox.GetPlayer(_source)
-
-    if type(data) == 'number' and data < 10 then
-        character = Player.charid
-    end
-
-    local result = MySQL.single.await('SELECT status FROM characters WHERE charid = ?', {
-        character
-    })
+AddEventHandler('ox:playerLoaded', function(source, userid, charid)
+    local result = MySQL.single.await('SELECT status FROM characters WHERE charid = ?', {charid})
 
     if not result or not result.status then
-        pStatus.new(_source, nil, character)
+        pStatus.new(source, nil, charid)
         -- Since we are creating the new status let's save it to the database
-        local obj = pStatus(_source)
+        local obj = pStatus(source)
         obj:saveStatuses()
     else
-        pStatus.new(_source, json.decode(result.status), character)
+        pStatus.new(source, json.decode(result.status), charid)
     end
 end)
 
