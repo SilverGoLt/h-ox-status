@@ -42,8 +42,7 @@ StartStatusThread = function()
             end
 
             if Status.list.hunger.amount == 0 or Status.list.thirst.amount == 0 then
-				local currentHealth = GetEntityHealth(cache.ped)
-				SetEntityHealth(cache.ped, currentHealth - math.random(1, 2))
+				SetEntityHealth(cache.ped, GetEntityHealth(cache.ped) - math.random(1, 2))
 			end
             
             TriggerEvent('status:tickUpdate', data)
