@@ -38,6 +38,20 @@ function CStatus:addStatus (status, amount)
     end
 end
 
+---Create New Status
+---@param status string Status name
+---@param amount number Status amount
+---@return boolean Success
+function CStatus:newStatus(status, amount)
+    if not self.status[status] then
+        self.status[status] = amount
+        return true
+    else
+        print('[ERROR] Status already exists: '..status.. ' for player: '..self.source)
+        return false
+    end
+end
+
 ---Saves the Players statuses to the database
 ---@return boolean
 function CStatus:saveStatuses()
