@@ -36,3 +36,15 @@ lib.callback.register('status:getStatuses', function(source)
     local obj = pStatus(source)
     return obj:getStatuses()
 end)
+
+---Create New Status Export
+---@param source integer Player Source
+---@param data table @{name, amount}
+NewStatus = function (source, data)
+    local obj = pStatus(source)
+    return obj:newStatus(data.name, data.amount)
+end
+
+exports('NewStatus', function (source, data)
+    return NewStatus(source, data)
+end)
