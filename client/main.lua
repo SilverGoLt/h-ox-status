@@ -22,6 +22,17 @@ AddEventHandler('ox:playerLogout', function()
     end
 end)
 
+lib.callback.register('status:createNew', function (data)
+    for k,v in pairs(Status.list) do
+        if v.name == data.name then
+            return false
+        end
+    end
+
+    Status.new(data.name, data.amount)
+    return true
+end)
+
 StartStatusThread = function()
     CreateThread(function ()
         while playerLoaded do
