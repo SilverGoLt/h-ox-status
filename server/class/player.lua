@@ -86,8 +86,7 @@ function pStatus.new (source, status, charid)
         source = source,
         status = status or {
             hunger = Config.StatusMax,
-            thirst = Config.StatusMax,
-            stress = 0
+            thirst = Config.StatusMax
         },
         charid = charid or nil,
     }
