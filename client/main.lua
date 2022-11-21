@@ -36,10 +36,14 @@ end)
 StartStatusThread = function()
     CreateThread(function ()
         while playerLoaded do
+            SetPlayerHealthRechargeMultiplier(cache.playerId, 0.0)
+            SetPlayerHealthRechargeLimit(cache.playerId, 0.0)
             local data = {}
             for k,v in pairs(Status.list) do
                 local obj = Status(k)
-                obj:remove(math.random(1, 20))
+                if k == 'hunger' or k == 'thirst' then
+                    obj:remove(math.random(1, 20))
+                end
 
                 data[#data+1] = {
                     name = k,
@@ -47,6 +51,10 @@ StartStatusThread = function()
                     percent = obj:getPercent()
                 }
             end
+
+            if Status.list.hunger.amount == 0 or Status.list.thirst.amount == 0 then
+				SetEntityHealth(cache.ped, GetEntityHealth(cache.ped) - math.random(1, 2))
+			end
             
             TriggerEvent('status:tickUpdate', data)
             data = nil
