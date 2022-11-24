@@ -7,9 +7,9 @@ RegisterNetEvent('ox:playerLoaded', function()
         if data then
             for k,v in pairs(data) do
                 Status.new(k, v)
-                StartStatusThread()
-                StartUpdateThread()
             end
+            StartStatusThread()
+            StartUpdateThread()
         end
     end)
 end)
